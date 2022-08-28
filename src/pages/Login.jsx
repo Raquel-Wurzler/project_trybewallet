@@ -37,6 +37,8 @@ class Login extends React.Component {
       }
       if (password.length >= MAX_LENGTH_PASSWORD && isEmailValid) {
         this.setState({ isDisabled: false });
+      } else {
+        this.setState({ isDisabled: true });
       }
     });
   };
