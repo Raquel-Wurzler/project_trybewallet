@@ -13,7 +13,6 @@ class Login extends React.Component {
   };
 
   btnSubmit = () => {
-    console.log('test');
     const { dispatch, history } = this.props;
     const { email } = this.state;
     dispatch(addUser(email));

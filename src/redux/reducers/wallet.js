@@ -3,6 +3,7 @@ import {
   REQUEST_WALLET,
   RECEIVE_WALLET_SUCCESS,
   RECEIVE_WALLET_FAILURE,
+  EXPENSES_WALLET,
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -26,6 +27,23 @@ const changesWallet = (state = INITIAL_STATE, action) => {
       ...state,
       currencies: Object.keys(action.currencies).filter((curr) => curr !== 'USDT'),
       loading: false,
+    };
+  case EXPENSES_WALLET:
+    return {
+      ...state,
+      loading: false,
+      expenses: [
+        ...state.expenses,
+        {
+          id: action.id,
+          value: action.value,
+          description: action.description,
+          currency: action.currency,
+          method: action.method,
+          tag: action.tag,
+          exchangeRates: action.exchangeRates,
+        },
+      ],
     };
   case RECEIVE_WALLET_FAILURE:
     return {
