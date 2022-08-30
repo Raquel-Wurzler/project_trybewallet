@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import store from '../redux/store';
 
 class Header extends Component {
   captureValues = () => {
@@ -14,6 +13,27 @@ class Header extends Component {
     }, 0);
     return expenseReducer;
   };
+
+  // captureValues = () => {
+  //   const { expenses } = this.props;
+  //   console.log(expenses);
+  //   const expenseReducer = expenses.reduce((acc, expense) => {
+  //     const { value, exchangeRates, currency } = expense;
+  //     const mult = Number(value)
+  //     * Number(exchangeRates[currency].ask);
+  //     return acc + mult;
+  //   }, 0);
+  //   return expenseReducer;
+  // };
+
+  // captureValues = () => {
+  //   const { expenses } = this.props;
+  //   console.log(expenses);
+  //   const expenseReducer = expenses.reduce((acc, expense) => (
+  //     parseFloat(expense.value)
+  //     * parseFloat(expense.exchangeRates[expense.currency].ask) + acc), 0);
+  //   return expenseReducer;
+  // };
 
   render() {
     const { email, expenses } = this.props;
