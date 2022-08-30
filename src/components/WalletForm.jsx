@@ -52,9 +52,8 @@ class WalletForm extends Component {
           data-testid="currency-input"
         >
           {
-            Object.keys(currencies).map((currency, i) => (
-              currency !== 'USDT'
-              && <option key={ i } value={ currency }>{currency}</option>
+            currencies.map((currency, i) => (
+              <option key={ i } value={ currency }>{currency}</option>
             ))
           }
         </select>
@@ -66,5 +65,10 @@ class WalletForm extends Component {
 const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
 });
+
+WalletForm.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 
 export default connect(mapStateToProps)(WalletForm);

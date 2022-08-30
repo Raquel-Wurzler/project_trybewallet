@@ -24,7 +24,7 @@ const changesWallet = (state = INITIAL_STATE, action) => {
   case RECEIVE_WALLET_SUCCESS:
     return {
       ...state,
-      currencies: action.currencies,
+      currencies: Object.keys(action.currencies).filter((curr) => curr !== 'USDT'),
       loading: false,
     };
   case RECEIVE_WALLET_FAILURE:
