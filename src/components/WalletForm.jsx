@@ -8,9 +8,9 @@ class WalletForm extends Component {
     id: -1,
     value: '',
     description: '',
-    currency: '',
-    method: '',
-    tag: '',
+    currency: 'USD',
+    method: 'Dinheiro',
+    tag: 'Alimentação',
   };
 
   componentDidMount() {
@@ -31,9 +31,9 @@ class WalletForm extends Component {
       this.setState({
         value: '',
         description: '',
-        currency: '',
-        method: '',
-        tag: '',
+        currency: 'USD',
+        method: 'Dinheiro',
+        tag: 'Alimentação',
       });
     });
   };
