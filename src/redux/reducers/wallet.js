@@ -4,6 +4,7 @@ import {
   RECEIVE_WALLET_SUCCESS,
   RECEIVE_WALLET_FAILURE,
   EXPENSES_WALLET,
+  REMOVE_WALLET,
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -44,6 +45,12 @@ const changesWallet = (state = INITIAL_STATE, action) => {
           exchangeRates: action.exchangeRates,
         },
       ],
+    };
+  case REMOVE_WALLET:
+    return {
+      ...state,
+      loading: false,
+      expenses: state.expenses.filter((exp) => exp.id !== action.payload),
     };
   case RECEIVE_WALLET_FAILURE:
     return {

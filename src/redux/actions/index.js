@@ -5,6 +5,7 @@ export const REQUEST_WALLET = 'REQUEST_WALLET';
 export const RECEIVE_WALLET_SUCCESS = 'RECEIVE_WALLET_SUCCESS';
 export const RECEIVE_WALLET_FAILURE = 'SUCCESS_WALLET_FAILURE';
 export const EXPENSES_WALLET = 'EXPENSES_WALLET';
+export const REMOVE_WALLET = 'REMOVE_WALLET';
 
 export const addUser = (email) => ({
   type: ADD_USER,
@@ -62,3 +63,8 @@ export const fetchWalletExpenses = (state) => async (dispatch) => {
     dispatch(requestWalletFailure(err));
   }
 };
+
+export const deleteWallet = (payload) => ({
+  type: REMOVE_WALLET,
+  payload,
+});
