@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchWallet, fetchWalletExpenses } from '../redux/actions';
+import { fetchWallet, fetchWalletExpenses, saveEditWallet } from '../redux/actions';
 
 class WalletForm extends Component {
   state = {
@@ -24,10 +24,19 @@ class WalletForm extends Component {
   };
 
   btnAdd = () => {
-    console.log('test');
     this.setState((prevState) => ({ id: prevState.id + 1 }), () => {
-      const { dispatch } = this.props;
-      dispatch(fetchWalletExpenses(this.state));
+      const { dispatch, editor, expenses, idToEdit } = this.props;
+      console.log(idToEdit);
+      if (editor === false) {
+        dispatch(fetchWalletExpenses(this.state));
+      } else {
+        const newState = this.state;
+        const newExpense = expenses;
+        console.log(newExpense);
+        newState.exchangeRates = newExpense[0].exchangeRates;
+        newState.id = idToEdit;
+        dispatch(saveEditWallet(newState));
+      }
       this.setState({
         value: '',
         description: '',
@@ -39,7 +48,7 @@ class WalletForm extends Component {
   };
 
   render() {
-    const { currencies } = this.props;
+    const { currencies, editor } = this.props;
     const { value, description, method, tag, currency } = this.state;
     return (
       <form>
@@ -119,7 +128,7 @@ class WalletForm extends Component {
           type="button"
           onClick={ this.btnAdd }
         >
-          Adicionar despesa
+          { editor ? 'Editar despesa' : 'Adicionar despesa' }
         </button>
       </form>
     );
@@ -128,11 +137,16 @@ class WalletForm extends Component {
 
 const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
+  editor: state.wallet.editor,
+  expenses: state.wallet.expenses,
+  idToEdit: state.wallet.idToEdit,
 });
 
 WalletForm.propTypes = {
   dispatch: PropTypes.func.isRequired,
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
+  editor: PropTypes.bool.isRequired,
+  expenses: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 
 export default connect(mapStateToProps)(WalletForm);

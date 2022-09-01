@@ -5,6 +5,8 @@ import {
   RECEIVE_WALLET_FAILURE,
   EXPENSES_WALLET,
   REMOVE_WALLET,
+  EDIT_WALLET,
+  SAVE_EDIT,
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -19,10 +21,7 @@ const INITIAL_STATE = {
 const changesWallet = (state = INITIAL_STATE, action) => {
   switch (action.type) {
   case REQUEST_WALLET:
-    return {
-      ...state,
-      loading: true,
-    };
+    return { ...state, loading: true };
   case RECEIVE_WALLET_SUCCESS:
     return {
       ...state,
@@ -49,9 +48,17 @@ const changesWallet = (state = INITIAL_STATE, action) => {
   case REMOVE_WALLET:
     return {
       ...state,
-      loading: false,
       expenses: state.expenses.filter((exp) => exp.id !== action.payload),
     };
+  case EDIT_WALLET:
+    return { ...state, editor: true, idToEdit: action.payload,
+    };
+  case SAVE_EDIT:
+    return { ...state,
+      editor: false,
+      expenses: [...state.expenses
+        .map((exp) => (exp.id !== state.idToEdit ? exp : action.payload))],
+      idToEdit: 0 };
   case RECEIVE_WALLET_FAILURE:
     return {
       ...state,

@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { deleteWallet } from '../redux/actions';
+import { deleteWallet, editWallet } from '../redux/actions';
 
 class Table extends Component {
   btnDelete = (id) => {
-    console.log('test delete button');
     const { dispatch } = this.props;
     dispatch(deleteWallet(id));
-    const totalField = document.getElementById('totalField');
-    console.log(totalField);
+  };
+
+  btnEdit = (id) => {
+    const { dispatch } = this.props;
+    dispatch(editWallet(id));
   };
 
   render() {
@@ -27,6 +29,13 @@ class Table extends Component {
           <td>{Number(value) * Number(exchangeRates[currency].ask)}</td>
           <td>BRL</td>
           <td>
+            <button
+              data-testid="edit-btn"
+              type="button"
+              onClick={ () => this.btnEdit(id) }
+            >
+              Editar
+            </button>
             <button
               type="button"
               data-testid="delete-btn"
