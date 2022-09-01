@@ -2,12 +2,14 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWith from './helpers/renderWith';
-import mockData from './helpers/mockData';
+// import mockData from './helpers/mockData';
 import App from '../App';
+
+const EMAIL = 'email@test.com';
 
 const initialState = {
   user: {
-    email: 'email@test.com',
+    email: EMAIL,
   },
   wallet: {
     currencies: [
@@ -35,29 +37,29 @@ const initialState = {
   },
 };
 
-const initialState2 = {
-  user: {
-    email: 'email@test.com',
-  },
-  wallet: {
-    currencies: [
-      Object.keys(mockData),
-    ],
-    expenses: [
-      {
-        id: 0,
-        value: '1',
-        description: '1',
-        currency: 'USD',
-        method: 'Cartão de crédito',
-        tag: 'Trabalho',
-        exchangeRates: mockData,
-      },
-    ],
-    editor: true,
-    idToEdit: 0,
-  },
-};
+// const initialState2 = {
+//   user: {
+//     email: 'email@test.com',
+//   },
+//   wallet: {
+//     currencies: [
+//       Object.keys(mockData),
+//     ],
+//     expenses: [
+//       {
+//         id: 0,
+//         value: '1',
+//         description: '1',
+//         currency: 'USD',
+//         method: 'Cartão de crédito',
+//         tag: 'Trabalho',
+//         exchangeRates: mockData,
+//       },
+//     ],
+//     editor: true,
+//     idToEdit: 0,
+//   },
+// };
 
 describe('Testing the application', () => {
   it('1- The home page contains inputs and button', () => {
@@ -70,7 +72,7 @@ describe('Testing the application', () => {
     const { history } = renderWith(<App />);
     const buttonEntrar = screen.getByRole('button', { name: /entrar/i });
     expect(buttonEntrar.disabled).toBeTruthy();
-    userEvent.type(screen.getByLabelText(/email/i), 'email@test.com');
+    userEvent.type(screen.getByLabelText(/email/i), EMAIL);
     userEvent.type(screen.getByLabelText(/senha/i), '123456');
     expect(buttonEntrar.disabled).toBeFalsy();
     userEvent.click(buttonEntrar);
@@ -78,7 +80,7 @@ describe('Testing the application', () => {
   });
   it('3- checks if the header renders correctly', () => {
     renderWith(<App />, { initialEntries: ['/carteira'], initialState });
-    expect(screen.getByRole('heading', { name: /email@test.com/i, level: 4 })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: EMAIL, level: 4 })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /0.00/i, level: 4 })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /brl/i, level: 4 })).toBeInTheDocument();
   });
