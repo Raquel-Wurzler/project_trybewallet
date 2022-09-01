@@ -26,13 +26,11 @@ class WalletForm extends Component {
   btnAdd = () => {
     this.setState((prevState) => ({ id: prevState.id + 1 }), () => {
       const { dispatch, editor, expenses, idToEdit } = this.props;
-      console.log(idToEdit);
       if (editor === false) {
         dispatch(fetchWalletExpenses(this.state));
       } else {
         const newState = this.state;
         const newExpense = expenses;
-        console.log(newExpense);
         newState.exchangeRates = newExpense[0].exchangeRates;
         newState.id = idToEdit;
         dispatch(saveEditWallet(newState));
@@ -147,6 +145,7 @@ WalletForm.propTypes = {
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
   editor: PropTypes.bool.isRequired,
   expenses: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  idToEdit: PropTypes.number.isRequired,
 };
 
 export default connect(mapStateToProps)(WalletForm);
