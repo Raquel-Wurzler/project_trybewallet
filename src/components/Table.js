@@ -33,6 +33,7 @@ class Table extends Component {
               data-testid="edit-btn"
               type="button"
               onClick={ () => this.btnEdit(id) }
+              className="button is-link is-outlined is-small"
             >
               Editar
             </button>
@@ -40,6 +41,7 @@ class Table extends Component {
               type="button"
               data-testid="delete-btn"
               onClick={ () => this.btnDelete(id) }
+              className="button is-danger is-outlined is-small"
             >
               Excluir
             </button>
@@ -49,9 +51,9 @@ class Table extends Component {
     });
 
     return (
-      <table>
-        <thead>
-          <tr>
+      <table className="table is-narrow">
+        <thead className="thead">
+          <tr className="tr">
             <th>Descrição</th>
             <th>Tag</th>
             <th>Método de pagamento</th>
@@ -63,7 +65,7 @@ class Table extends Component {
             <th>Editar/Excluir</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="tbody">
           { tbody }
         </tbody>
       </table>

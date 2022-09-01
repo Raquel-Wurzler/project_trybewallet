@@ -21,10 +21,18 @@ class Header extends Component {
       return acc + mult;
     }, 0).toFixed(2);
     return (
-      <section>
-        <h4 data-testid="email-field">{ email }</h4>
-        <h4 data-testid="total-field" id="totalField">{ updateSum }</h4>
-        <h4 data-testid="header-currency-field">BRL</h4>
+      <section className="hero is-link">
+        <div className="hero-body">
+          <h4 data-testid="email-field" className="subtitle">{ email }</h4>
+          <h4
+            data-testid="total-field"
+            id="totalField"
+            className="title"
+          >
+            { updateSum }
+          </h4>
+          <h4 data-testid="header-currency-field" className="subtitle">BRL</h4>
+        </div>
       </section>
     );
   }

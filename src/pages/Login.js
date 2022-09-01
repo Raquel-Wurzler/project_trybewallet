@@ -45,37 +45,45 @@ class Login extends React.Component {
   render() {
     const { isDisabled, email, password } = this.state;
     return (
-      <form>
-        <label htmlFor="email">
-          Email
-          <input
-            type="email"
-            name="email"
-            value={ email }
-            id="email"
-            data-testid="email-input"
-            onChange={ this.handleChange }
-          />
-        </label>
-        <label htmlFor="password">
-          Senha
-          <input
-            type="password"
-            name="password"
-            value={ password }
-            id="password"
-            data-testid="password-input"
-            onChange={ this.handleChange }
-          />
-        </label>
-        <button
-          type="button"
-          onClick={ this.btnSubmit }
-          disabled={ isDisabled }
-        >
-          Entrar
-        </button>
-      </form>
+      <div className="login-form-container is-flex is-justify-content-center">
+        <form className="form login-form box">
+          <div>
+            <label htmlFor="email">
+              Email
+              <input
+                type="email"
+                name="email"
+                value={ email }
+                id="email"
+                data-testid="email-input"
+                onChange={ this.handleChange }
+                className="input is-link is-small"
+              />
+            </label>
+          </div>
+          <label htmlFor="password">
+            Senha
+            <input
+              type="password"
+              name="password"
+              value={ password }
+              id="password"
+              data-testid="password-input"
+              onChange={ this.handleChange }
+              className="input is-link is-small"
+            />
+          </label>
+          <button
+            type="button"
+            onClick={ this.btnSubmit }
+            disabled={ isDisabled }
+            className="button is-link is-focused"
+          >
+            Entrar
+          </button>
+
+        </form>
+      </div>
     );
   }
 }
