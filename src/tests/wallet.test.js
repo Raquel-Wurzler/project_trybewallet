@@ -6,6 +6,7 @@ import mockData from './helpers/mockData';
 import App from '../App';
 
 const EMAIL = 'email@test.com';
+const DESCRICAO = 'Descrição:';
 
 const initialState = {
   user: {
@@ -106,7 +107,7 @@ describe('Testing the application', () => {
     global.fetch = jest.fn(async () => ({ json: async () => mockData }));
     renderWith(<App />, { initialEntries: ['/carteira'], initialState });
     userEvent.type(screen.getByLabelText('Valor:'), '10');
-    userEvent.type(screen.getByLabelText('Descrição:'), 'donuts');
+    userEvent.type(screen.getByLabelText(DESCRICAO), 'donuts');
     userEvent.selectOptions(screen.getByLabelText('Método de Pagamento:'), 'Dinheiro');
     userEvent.selectOptions(screen.getByLabelText('Categoria:'), 'Alimentação');
     userEvent.selectOptions(screen.getByLabelText('Moeda:'), 'USD');
@@ -132,7 +133,7 @@ describe('Testing the application', () => {
     await waitFor(() => expect(haederTotal).toHaveTextContent('47.53'));
 
     userEvent.type(screen.getByLabelText('Valor:'), '100');
-    userEvent.type(screen.getByLabelText('Descrição:'), 'hotel');
+    userEvent.type(screen.getByLabelText(DESCRICAO), 'hotel');
     userEvent.selectOptions(screen.getByLabelText('Método de Pagamento:'), 'Cartão de crédito');
     userEvent.selectOptions(screen.getByLabelText('Categoria:'), 'Lazer');
     userEvent.selectOptions(screen.getByLabelText('Moeda:'), 'CAD');
@@ -155,7 +156,7 @@ describe('Testing the application', () => {
     await waitFor(() => userEvent.click(buttonEditar));
     await waitFor(() => expect(screen.getByRole('button', { name: 'Editar despesa' })).toBeInTheDocument());
     userEvent.type(screen.getByLabelText('Valor:'), '25');
-    userEvent.type(screen.getByLabelText('Descrição:'), 'cookie');
+    userEvent.type(screen.getByLabelText(DESCRICAO), 'cookie');
     userEvent.click(screen.getByRole('button', { name: 'Editar despesa' }));
     const descriptionEdited = await screen.findByRole('cell', { name: 'cookie' });
     await waitFor(() => expect(descriptionEdited).toBeInTheDocument());
