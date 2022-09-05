@@ -58,7 +58,6 @@ export const fetchWallet = () => async (dispatch) => {
 export const fetchWalletExpenses = (state) => async (dispatch) => {
   dispatch(requestWallet());
   try {
-    console.log(state);
     const responseExpense = await getWalletApi();
     dispatch(expensesWallet(responseExpense, state));
   } catch (err) {

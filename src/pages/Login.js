@@ -45,7 +45,7 @@ class Login extends React.Component {
   render() {
     const { isDisabled, email, password } = this.state;
     return (
-      <div className="login-form-container is-flex is-justify-content-center">
+      <div className="login-form-container is-flex is-justify-content-center" id="login">
         <form className="form login-form box">
           <div>
             <label htmlFor="email">
