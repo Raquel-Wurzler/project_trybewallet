@@ -1,5 +1,5 @@
 import React from 'react';
-import { findByText, screen, waitFor } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWith from './helpers/renderWith';
 // import mockData from './helpers/mockData';
