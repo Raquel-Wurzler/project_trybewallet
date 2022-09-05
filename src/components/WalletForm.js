@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchWallet, fetchWalletExpenses, saveEditWallet } from '../redux/actions';
+import './components.css';
 
 class WalletForm extends Component {
   state = {
@@ -49,9 +50,9 @@ class WalletForm extends Component {
     const { currencies, editor } = this.props;
     const { value, description, method, tag, currency } = this.state;
     return (
-      <div className="login-form-container is-flex is-justify-content-center">
+      <div className="contai">
         <form className="form login-form box">
-          <label htmlFor="value">
+          <label htmlFor="value" className="margin-inputs">
             Valor:
             <input
               type="text"
@@ -60,11 +61,11 @@ class WalletForm extends Component {
               value={ value }
               data-testid="value-input"
               onChange={ this.handleChange }
-              className="input is-focused is-small"
+              className="input is-focused is-small value marg"
             />
           </label>
 
-          <label htmlFor="description">
+          <label htmlFor="description" className="margin-inputs">
             Descrição:
             <input
               type="text"
@@ -73,11 +74,11 @@ class WalletForm extends Component {
               value={ description }
               data-testid="description-input"
               onChange={ this.handleChange }
-              className="input is-link is-small"
+              className="input is-link is-small description marg"
             />
           </label>
 
-          <label htmlFor="method" className="select">
+          <label htmlFor="method" className="select is-multiple margin-inputs">
             Método de Pagamento:
             <select
               data-testid="method-input"
@@ -92,7 +93,7 @@ class WalletForm extends Component {
             </select>
           </label>
 
-          <label htmlFor="tag" className="select">
+          <label htmlFor="tag" className="select is-multiple margin-inputs">
             Categoria:
             <select
               data-testid="tag-input"
@@ -109,7 +110,7 @@ class WalletForm extends Component {
             </select>
           </label>
 
-          <label htmlFor="currency" className="select">
+          <label htmlFor="currency" className="select is-multiple margin-inputs">
             Moeda:
             <select
               data-testid="currency-input"

@@ -1,0 +1,25 @@
+.value {
+  width: 150px;
+}
+
+.description {
+  width: 250px;
+}
+
+.margin-inputs {
+  margin: 10px;
+}
+
+.marg {
+  margin: 10px;
+}
+
+.contai {
+  display: flex;
+  justify-content: space-around;
+}
+
+.test {
+  display: flex;
+  flex-direction: column;
+}

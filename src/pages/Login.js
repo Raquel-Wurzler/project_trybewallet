@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addUser } from '../redux/actions';
-import './login.css';
+import './pages.css';
 
 const MAX_LENGTH_PASSWORD = 6;
 
