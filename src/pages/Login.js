@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addUser } from '../redux/actions';
+import './login.css';
 
 const MAX_LENGTH_PASSWORD = 6;
 
@@ -46,7 +47,7 @@ class Login extends React.Component {
     const { isDisabled, email, password } = this.state;
     return (
       <div className="login-form-container is-flex is-justify-content-center" id="login">
-        <form className="form login-form box">
+        <form className="form login-form box" id>
           <div>
             <label htmlFor="email">
               Email

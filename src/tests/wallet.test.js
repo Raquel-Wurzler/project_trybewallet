@@ -2,7 +2,7 @@ import React from 'react';
 import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWith from './helpers/renderWith';
-// import mockData from './helpers/mockData';
+import mockData from './helpers/mockData';
 import App from '../App';
 
 const EMAIL = 'email@test.com';
@@ -103,6 +103,7 @@ describe('Testing the application', () => {
     expect(screen.getByRole('columnheader', { name: 'Editar/Excluir' })).toBeInTheDocument();
   });
   it('5- The add expense form works correctly', async () => {
+    global.fetch = jest.fn(async () => ({ json: async () => mockData }));
     renderWith(<App />, { initialEntries: ['/carteira'], initialState });
     userEvent.type(screen.getByLabelText('Valor:'), '10');
     userEvent.type(screen.getByLabelText('Descrição:'), 'donuts');
@@ -128,7 +129,7 @@ describe('Testing the application', () => {
     await waitFor(() => expect(econversionCurrencyTable).toBeInTheDocument());
     await waitFor(() => expect(buttonEditar).toBeInTheDocument());
     await waitFor(() => expect(buttonExcluir).toBeInTheDocument());
-    await waitFor(() => expect(haederTotal).toHaveTextContent(/51/i));
+    await waitFor(() => expect(haederTotal).toHaveTextContent('47.53'));
 
     userEvent.type(screen.getByLabelText('Valor:'), '100');
     userEvent.type(screen.getByLabelText('Descrição:'), 'hotel');
@@ -150,8 +151,22 @@ describe('Testing the application', () => {
     await waitFor(() => expect(econversionCurrencysTable).toHaveLength(2));
     await waitFor(() => expect(buttonsEditar).toHaveLength(2));
     await waitFor(() => expect(buttonsExcluir).toHaveLength(2));
-    await waitFor(() => expect(haederTotal).toHaveTextContent(/444/i));
+    await waitFor(() => expect(haederTotal).toHaveTextContent('423.12'));
     await waitFor(() => userEvent.click(buttonEditar));
-    await waitFor(() => expect(buttonAdd).not.toBeInTheDocument());
+    await waitFor(() => expect(screen.getByRole('button', { name: 'Editar despesa' })).toBeInTheDocument());
+    userEvent.type(screen.getByLabelText('Valor:'), '25');
+    userEvent.type(screen.getByLabelText('Descrição:'), 'cookie');
+    userEvent.click(screen.getByRole('button', { name: 'Editar despesa' }));
+    const descriptionEdited = await screen.findByRole('cell', { name: 'cookie' });
+    await waitFor(() => expect(descriptionEdited).toBeInTheDocument());
+    const valueEdited = await screen.findByRole('cell', { name: '25.00' });
+    await waitFor(() => expect(valueEdited).toBeInTheDocument());
+    await waitFor(() => expect(haederTotal).toHaveTextContent('494.42'));
+    userEvent.click(buttonExcluir);
+    const btnEditar = await screen.findAllByRole('button', { name: 'Editar' });
+    await waitFor(() => expect(btnEditar).toHaveLength(1));
+    const btnExcluir = await screen.findAllByRole('button', { name: 'Editar' });
+    await waitFor(() => expect(btnExcluir).toHaveLength(1));
+    await waitFor(() => expect(haederTotal).toHaveTextContent('375.59'));
   });
 });
