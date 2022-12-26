@@ -51,33 +51,36 @@ class WalletForm extends Component {
     const { value, description, method, tag, currency } = this.state;
     return (
       <div className="contai">
-        <form className="form login-form box">
-          <label htmlFor="value" className="margin-inputs">
-            Valor:
-            <input
-              type="text"
-              id="value"
-              name="value"
-              value={ value }
-              data-testid="value-input"
-              onChange={ this.handleChange }
-              className="input is-focused is-small value marg"
-            />
-          </label>
-
-          <label htmlFor="description" className="margin-inputs">
-            Descrição:
-            <input
-              type="text"
-              id="description"
-              name="description"
-              value={ description }
-              data-testid="description-input"
-              onChange={ this.handleChange }
-              className="input is-link is-small description marg"
-            />
-          </label>
-
+        <form className="form login-form box form1">
+          <div className="valor-descrição">
+            <label htmlFor="value" className="margin-inputs no-margin">
+              Valor:
+              <br />
+              <input
+                type="text"
+                id="value"
+                name="value"
+                value={ value }
+                data-testid="value-input"
+                onChange={ this.handleChange }
+                className="input is-focused is-small value marg"
+              />
+            </label>
+            <br />
+            <label htmlFor="description" className="margin-inputs no-margin">
+              Descrição:
+              <br />
+              <input
+                type="text"
+                id="description"
+                name="description"
+                value={ description }
+                data-testid="description-input"
+                onChange={ this.handleChange }
+                className="input is-link is-small description marg"
+              />
+            </label>
+          </div>
           <label htmlFor="method" className="select is-multiple margin-inputs">
             Método de Pagamento:
             <select
@@ -129,7 +132,7 @@ class WalletForm extends Component {
           <button
             type="button"
             onClick={ this.btnAdd }
-            className="button is-link is-focused"
+            className="button is-link is-focused btn"
           >
             { editor ? 'Editar despesa' : 'Adicionar despesa' }
           </button>

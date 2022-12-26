@@ -27,8 +27,6 @@ class Login extends React.Component {
     }, () => {
       const { email, password } = this.state;
       const format = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
-      // /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-      // /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i
       let isEmailValid = false;
       if (email.match(format)) {
         isEmailValid = true;
@@ -47,7 +45,7 @@ class Login extends React.Component {
     const { isDisabled, email, password } = this.state;
     return (
       <div className="login-form-container is-flex is-justify-content-center">
-        <form className="form login-form box" id>
+        <form className="form login-form box" id="loginid">
           <div>
             <label htmlFor="email">
               Email

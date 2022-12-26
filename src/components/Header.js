@@ -3,16 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 class Header extends Component {
-  // captureValues = () => {
-  //   const { expenses } = this.props;
-  //   const expenseReducer = expenses.reduce((acc, expense) => {
-  //     const mult = Number(expense.value)
-  //     * Number(expense.exchangeRates[expense.currency].ask);
-  //     return acc + mult;
-  //   }, 0);
-  // return expenseReducer;
-  // };
-
   render() {
     const { email, expenses } = this.props;
     const updateSum = expenses.reduce((acc, expense) => {

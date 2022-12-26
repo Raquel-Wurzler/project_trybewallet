@@ -1,3 +1,18 @@
+body {
+  background-image: url('../../imgs/gif-cifrao-animado.gif')
+}
+
+#loginid {
+  background-color: rgb(228, 201, 3);
+}
+
+.hero-body {
+  background-image: url('https://media4.giphy.com/media/OQ6NOoYRWOiUgLfjTr/giphy.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 15%;
+}
+
 .value {
   width: 150px;
 }
@@ -17,9 +32,24 @@
 .contai {
   display: flex;
   justify-content: space-around;
+  align-items: flex-end;
 }
 
-.test {
+.valor-descrição {
+  display: flex;
+  flex-direction: row;
+}
+
+.no-margin {
+  line-height: 0%;
+}
+
+.marg {
+  margin-left: 0%;
+}
+
+.form1 {
   display: flex;
   flex-direction: column;
+  background-color: rgb(221, 221, 221);
 }
