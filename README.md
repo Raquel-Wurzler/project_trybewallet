@@ -37,7 +37,7 @@ _"A Trybe é uma escola do futuro para qualquer pessoa que queira melhorar de vi
 * package.json;
 * pasta public;
 
-##### Link Deploy: https://grand-mooncake-8ca9bc.netlify.app
+##### Link Deploy: https://earnest-profiterole-eec6ab.netlify.app/
 
 ## Stack utilizada
 
