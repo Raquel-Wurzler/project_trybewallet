@@ -24,6 +24,7 @@ _"A Trybe é uma escola do futuro para qualquer pessoa que queira melhorar de vi
 * As informações referente as conversões das moedas vem do endpoint https://economia.awesomeapi.com.br/json/all, da API economia.awesomeapi;
 * Todo componentizado em arquivos JavaScript;
 * Contém duas páginas principais: Login (para fazer login do usuário) e Wallet (para incluir as despesas e ver as conversões);
+* Nessa aplicação é possível adicionar despesas escolhendo em qual moeda, qual a forma de pagamento, descrição e o calculo é feito pela aplicação;
 
 
 ##### Arquivos disponibilizados pela Trybe:
