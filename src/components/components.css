@@ -1,5 +1,5 @@
 body {
-  background-image: url('../../imgs/gif-cifrao-animado.gif')
+  background-image: url('../../public/cifrao.gif')
 }
 
 #loginid {
@@ -7,7 +7,7 @@ body {
 }
 
 .hero-body {
-  background-image: url('https://media4.giphy.com/media/OQ6NOoYRWOiUgLfjTr/giphy.gif');
+  background-image: url('../../public/cifrao2.gif');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 15%;
