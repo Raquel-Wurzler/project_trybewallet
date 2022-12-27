@@ -25,6 +25,7 @@ _"A Trybe é uma escola do futuro para qualquer pessoa que queira melhorar de vi
 * Todo componentizado em arquivos JavaScript;
 * Contém duas páginas principais: Login (para fazer login do usuário) e Wallet (para incluir as despesas e ver as conversões);
 * Nessa aplicação é possível adicionar despesas escolhendo em qual moeda, qual a forma de pagamento, descrição e o calculo é feito pela aplicação;
+* Usado Bulma para auxiliar na estilização;
 
 
 ##### Arquivos disponibilizados pela Trybe:
@@ -42,7 +43,7 @@ _"A Trybe é uma escola do futuro para qualquer pessoa que queira melhorar de vi
 
 ## Stack utilizada
 
-**Front-end:** JavaScript, React-Redux, CSS, HTML
+**Front-end:** JavaScript, React-Redux, CSS, HTML, Bulma
 
 ## Instalação e uso
 
